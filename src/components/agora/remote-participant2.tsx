@@ -29,7 +29,7 @@ const RemoteParticipants2 = () => {
     if (!prevScreenShareTrackRef.current && screenShareTrack) {
       console.log('Screen Share Started');
     } else if (prevScreenShareTrackRef.current && !screenShareTrack) {
-      console.log('Screen Share Ended');
+      console.log('Screen Share Stopped');
     }
     prevScreenShareTrackRef.current = screenShareTrack;
   }, [screenShareTrack]);

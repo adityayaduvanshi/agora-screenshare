@@ -18,7 +18,11 @@ const RemoteParticipants2 = () => {
 
   // Find the screenshare user and video track
   const screenShareUser = remoteUsers.find((user) =>
-    user.uid.toString().includes('Screenshare')
+    user.uid
+      .toString()
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, '')
+      .includes('screenshare')
   );
   const screenShareTrack = screenShareUser
     ? videoTracks.find((track) => track.getUserId() === screenShareUser.uid)

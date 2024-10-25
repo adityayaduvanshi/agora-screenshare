@@ -49,7 +49,7 @@ const Boardroom2 = () => {
       appid: process.env.REACT_APP_AGORAID!,
       channel: process.env.REACT_APP_CHANNEL!,
       token: null,
-      uid: `${agoraUid}-screenshare`,
+      uid: `${agoraUid}-screendev`,
     },
 
     calling
@@ -59,15 +59,12 @@ const Boardroom2 = () => {
 
   useClientEvent(client, 'connection-state-change', (e) => {
     console.log(e, 'etst');
-    if (e === 'DISCONNECTING') {
-      localStorage.removeItem('active');
-    }
   });
 
   // console.log(client);
 
   useClientEvent(client, 'user-joined', (e) => {
-    if (e.uid.toString().includes('ScreenShare')) {
+    if (e.uid.toString().includes('screenShare')) {
       setScreenshareStarted(true);
       return;
     }
@@ -76,7 +73,7 @@ const Boardroom2 = () => {
     } else console.log(e);
   });
   useClientEvent(client, 'user-left', (e) => {
-    if (e.uid === 'Screenshare') {
+    if (e.uid === 'screenshare') {
       // toast.success('Screenshare ended.');
       setScreenshareStarted(false);
     } else console.log(e.uid, 'user left');
